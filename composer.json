@@ -1,0 +1,47 @@
+{
+    "name": "kingrainy/phwoolcon",
+    "description": "Phalcon + Swoole from phwoolcon/phwoolcon",
+    "keywords": ["phwoolcon", "phalcon", "swoole"],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "KingRainy",
+            "email": "kingrainy@163.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.5.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "ext-PDO": "*",
+        "ext-mbstring": "*",
+        "ext-phalcon": "~3.0",
+        "symfony/console": "~3.0",
+        "pda/pheanstalk": "~3.1",
+        "swiftmailer/swiftmailer": "~5.4|~6.0",
+        "opis/closure": "3.0.1"
+    },
+    "suggest": {
+        "ext-swoole": "~1.8|~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phwoolcon\\": "phwoolcon\\src",
+            "Phwoolcon\\Tests\\": "tests",
+			"Phwoolcon\\Fsm\\": "fsm\\src"
+        },
+        "exclude-from-classmap": [
+            "/phwoolcon/tests/"
+        ],
+        "files": ["/phwoolcon/functions.php"]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    }
+}
