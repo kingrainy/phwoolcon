@@ -10,7 +10,6 @@
             "email": "kingrainy@163.com"
         }
     ],
-    "version": "1.0.0",
     "require": {
         "php": ">=5.5.0",
         "ext-curl": "*",
@@ -37,10 +36,5 @@
             "/phwoolcon/tests/"
         ],
         "files": ["/phwoolcon/functions.php"]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
-        }
     }
 }
