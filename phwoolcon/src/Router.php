@@ -319,9 +319,10 @@ class Router extends PhalconRouter implements ServiceAwareInterface
             return $e->toResponse();
             //return static::$runningUnitTest ? $e : $e->toResponse();
         } catch (\Exception $exception) {
-            debug('[Exception] File:[' . $exception->getFile() . '] ' . 'Line:[' . $exception->getLine() . '] ' . 'Message:[' . $exception->getMessage() . '] ', 'ERROR');
+            function_exists('debug') and debug('[Exception] File:[' . $exception->getFile() . '] ' . 'Line:[' . $exception->getLine() . '] ' . 'Message:[' . $exception->getMessage() . '] ', 'ERROR');
             //捕获异常
             $response = new Response(); //获取响应实例
+            if (false !== strpos($exception->getMessage(), 'Warning - ') || false !== strpos($exception->getMessage(), 'Notice - ')) return self::exceptionResponse($response, $exception->getMessage(), 204);
             //判断是否为API异常
             if ($exception instanceof ApiException) {
                 $response->setStatusCode(200); //设置HTTP状态码
