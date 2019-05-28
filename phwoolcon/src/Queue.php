@@ -28,11 +28,6 @@ class Queue
 
     public function __construct($config)
     {
-        //为避免消息队列中mysql的连接长时间没有通讯而被mysql服务端踢掉，所以在消息队列中使用该数据库类，该类当发生mysql gone away错误时，会自动重试一次
-        global $mysql;
-        $mysqlConfig = Config::get('database.connections.mysql');
-        $mysql = new MySQL($mysqlConfig['host'], empty($mysqlConfig['port']) ? 3306 : $mysqlConfig['port'], $mysqlConfig['username'], $mysqlConfig['password'], $mysqlConfig['dbname'], $mysqlConfig['charset']); //实例化mysql组件并连接
-
         $this->config = $config;
         static::$di->has('queueFailLogger') or static::$di->setShared('queueFailLogger', function () use ($config) {
             $class = $config['failed_logger']['adapter'];
